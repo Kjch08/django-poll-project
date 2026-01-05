@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results - {{ question.questions_text }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container my-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title">Results: {{ question.questions_text }}</h3>
+
+            <ul class="list-group mt-3">
+                {% for choice in question.choices.all %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ choice.choice_text }}
+                        <span class="badge bg-primary rounded-pill">{{ choice.votes }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <a href="{% url 'question_list' %}" class="btn btn-link mt-3">Back to Polls</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
